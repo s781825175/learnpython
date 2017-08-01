@@ -7,4 +7,4 @@ for i in range(101,201):
             a=0
             break
     if a==1:
-        print i
+        print '%5d' %(i)
