@@ -6,4 +6,4 @@ for i in range(1,10000):
             a=j*j
             b=k*k
             if i+100==a and i+268==b:
-                print i
+                print (i, end=' ')

@@ -8,5 +8,5 @@ for i in range(5):
             if i!=j and j!=k and k!=i:
                 c = i*100+j*10+k
                 lis.append(c)
-print lis
+print (lis, end=' ')
 

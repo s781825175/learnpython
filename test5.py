@@ -6,5 +6,5 @@ for i in range(1,1001):
         if i%j==0 and i>j:
             a+=j
     if i==a:
-        print i
+        print (i)
 
