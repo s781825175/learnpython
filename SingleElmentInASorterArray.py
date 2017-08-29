@@ -4,8 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        nums.sort()
         a=0
-        while nums[a]==nums[a+1]:
+        while nums[a]==nums[a+1] or a==len(nums):
             a+=2
         return nums[a]
         
