@@ -11,12 +11,9 @@ class Solution(object):
             a.append(i)
             while len(a)==len(set(a)):
                 b.append(num[a[-1]])
-                print(b)
                 a.append(nums[b[-1]])
-                print(a)
             c.append(len(set(a)))
         c.sort()
-        print(c)
         return c[-1]
 
 if __name__ == '__main__':
