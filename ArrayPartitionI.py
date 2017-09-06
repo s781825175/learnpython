@@ -5,14 +5,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        l=len(nums)/2
-        l=int(l)
-        nums.sort()
-        m=nums[:l]
-        n=nums[l:(l+l)]
-        sum=min(m)+min(n)
-        return sum
-a=Solution()
-nums=[1,4,3,2,8,5,9,6]
-sum=a.arrayPairSum(nums)
-print(sum)
+        return sum(sorted(nums)[::2])
+
+if __name__ == '__main__':
+    nums=[1,4,3,2,8,5,9,6]
+    print(Solution().arrayPairSum(nums))
