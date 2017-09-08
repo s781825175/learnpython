@@ -5,22 +5,14 @@ class Solution(object):
         :type words: List[str]
         :rtype: int
         """
-        a=combinations(words,2)
-        b=[]
-        c=0
+        b=list(combinations(words,2))
         d=[]
-        for i in a:
-            for j in list(i[0]):
-                c=1
-                if i[1].find(j)>-1:
-                    c=0
-                    break
-            if c==1:
-                b.append([i[0],i[1]])
-        for k in b:
-            d.append(len(k[0])*len(k[1]))
-        d.sort()
-        return d[-1]
+        for i in b:
+            c=i[0]+i[1]
+            if len(c)==len(set(c)):
+                d.append(len(i[0])*len(i[1]))
+        return max(d)
+
 
 
 if __name__ == '__main__':
