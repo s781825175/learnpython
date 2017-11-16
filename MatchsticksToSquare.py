@@ -5,12 +5,14 @@ class Solution(object):
         :rtype: bool
         """
         def dfs(nums, pos, target):
-            if pos == len(nums): return True
+            if pos == len(nums):
+                return True
             for i in range(4):
                 if target[i] >= nums[pos]:
                     target[i] -= nums[pos]
-                    print(target[i])
-                    if dfs(nums, pos+1, target): return True
+                    print(target)
+                    if dfs(nums, pos+1, target):
+                        return True
                     target[i] += nums[pos]
             return False
         if len(nums) < 4 : return False
@@ -22,5 +24,5 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    nums=[3,3,3,3,4]
+    nums=[1,3,5,2,4,5]
     print(Solution().makesquare(nums))
