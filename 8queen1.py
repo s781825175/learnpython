@@ -1,61 +1,32 @@
-n = 8
-x = []
-def text(x):
-    if len(set(x)) < len(x):
-        return 0
-    a = list(range(len(x)))
-    b,c=[],[]
-    for i in range(len(x)):
-        b.append(x[i]+a[i])
-        c.append(x[i]-a[i])
-    if len(set(b)) < len(b):
-        return 0
-    if len(set(c)) < len(c):
-        return 0
+def judge(q,m):
+    for i in range(m):
+        for j in range(i):
+            if q[i] == q[j]:
+                return 0
+            elif q[i] == q[j] + i - j:
+                return 0
+            elif q[i] == q[j] + j - i:
+                return 0
+
     return 1
-ori = 1
-d = []
 
-def queen(ori,x,d,n):
-    if len(d) == 2:
-        return d
-    if len(x) == n: 
-        if x not in d:
-            d.append(x)
-            if x[-1] < n:
-                ori = x[-1]+1
-                x.pop()
-                print(ori,x,d)
-                return queen(ori,x,d,n)
-            else:
-                ori = x[-2]+1
-                x.pop()
-                x.pop()
-                return queen(ori,x,d,n)
-        else:
-            if x[-1] < n:
-                ori = x[-1]+1
-                x.pop()
-                return queen(ori,x,d,n)
-            else:
-                ori = x[-2]+1
-                x.pop()
-                x.pop()
-                return queen(ori,x,d,n)
+def backtracking(q,i):
+    global m2
+    k = 1
+    for j in range(8):
+        q[i]=j
+        if i != 0: #不为第一行，则判断当前可行性，不可行则回溯到上一层
+            k = judge(q,i+1)
+        if k == 1:
+            if (i+1 != 8): #可行，则继续往下填充皇后
+                backtracking(q,i+1)
+            else: #若为最后一行，则计数+1
+                m2+=1
+                print(q)
 
-    for i in range(ori,n+1):
-        x.append(i)
-        if text(x) == 1:
-            return queen(1,x,d,n)
-        else:
-            x.pop()
-    if x[-1] < n:
-        ori = x[-1]+1
-        x.pop()
-    else:
-        ori = x[-2]+1
-        x.pop()
-        x.pop()
-    return queen(ori,x,d,n)
 
-print(queen(ori,x,d,n))
+m2 = 0
+q = [[]]*8
+backtracking(q,0)
+print(m2)
+
